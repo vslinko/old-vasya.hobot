@@ -9,7 +9,6 @@
     "dependencies": {
         "coffee-script": "~1.6",
         "hubot": "~2.6",
-        "hubot-scripts": "~2.5",
         "hubot-skype": "git://github.com/netpro2k/hubot-skype.git",
         "nconf": "~0.6",
         "fs-extra": "~0.8",
