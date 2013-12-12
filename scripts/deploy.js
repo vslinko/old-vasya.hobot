@@ -3,7 +3,7 @@
 
 
 module.exports = function(robot) {
-    robot.respond(/деплой (.+)/i, function(msg) {
+    robot.respond(/(?:деплой|задеплой) (.+)/i, function(msg) {
         var deploy = robot.helpers.deploy(msg.match[1]);
 
         deploy.on('data', function(data) {

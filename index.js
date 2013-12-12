@@ -17,13 +17,15 @@ var production = env === 'production';
 var adaptersPath = path.join(__dirname, 'node_modules', 'hubot', 'src', 'adapters');
 var helpersPath = path.join(__dirname, 'helpers');
 
-var enableHttpd = true;
+var enableHttpd = false;
 var adapter = production ? 'skype' : 'shell';
 var alias = 'Вась';
 var name = 'Вася';
 
 var robot = hubot.loadBot(adaptersPath, adapter, enableHttpd, name);
 
+robot.env = env;
+robot.production = production;
 robot.config = config;
 robot.alias = alias;
 robot.helpers = {};

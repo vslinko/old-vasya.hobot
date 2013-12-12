@@ -4,14 +4,22 @@
 
 
 module.exports = function(robot) {
-    robot.respond(/покажи конфиг/i, function (msg) {
+    robot.respond(/(?:покажи )?конфиг/i, function (msg) {
+        if (!robot.helpers.checkAdmin(msg)) {
+            return;
+        }
+
         msg.send(robot.helpers.getAllConfigKeys().map(function(key) {
             return key + ' ' + JSON.stringify(robot.config.get(key));
         }).join('\n'));
     });
 
-    robot.respond(/установи (.+) в (.+)/i, function(msg) {
+    robot.respond(/(?:настрой|установи) (.+)\s*(?:в|=)\s*(.+)/i, function(msg) {
         var value;
+
+        if (!robot.helpers.checkAdmin(msg)) {
+            return;
+        }
 
         try {
             value = JSON.parse(msg.match[2]);

@@ -6,7 +6,7 @@
 
 
 module.exports = function(robot) {
-    robot.respond(/ачивка (?:(\d+) )?(.+)/i, function(msg) {
+    robot.respond(/(?:ачивка|вручи ачивку|выдай ачивку) (?:(\d+) )?(.+)/i, function(msg) {
         var sep, title, message, icon;
 
         if (msg.match[2].indexOf(':') >= 0) {

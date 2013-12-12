@@ -23,11 +23,11 @@ module.exports = function(robot) {
                 data = '';
 
             if (!projects || !projects[projectName]) {
-                return emitter.emit('error', new Error('ProjectNotFound'));
+                return emitter.emit('error', new Error('проект ' + projectName + ' не найден'));
             }
 
             if (deployProcess !== null) {
-                return emitter.emit('error', new Error('DeployLimit'));
+                return emitter.emit('error', new Error('деплой уже идет'));
             }
 
             project = projects[projectName];
@@ -43,7 +43,7 @@ module.exports = function(robot) {
 
                 if (err) {
                     emitter.emit('data', stderr.split('\n').slice(-25).join('\n'));
-                    emitter.emit('error', new Error('ProcessError'));
+                    emitter.emit('error', new Error('ошибка деплоя'));
                 } else {
                     emitter.emit('end');
                 }
@@ -61,7 +61,7 @@ module.exports = function(robot) {
                     emitter.emit('data', data);
                 }
 
-                emitter.emit('error', new Error('ProcessTimeout'));
+                emitter.emit('error', new Error('деплой завершен по таймауту'));
 
                 deployProcess.kill('SIGKILL');
                 clearInterval(interval);

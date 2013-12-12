@@ -7,6 +7,10 @@ var fs = require('fs-extra');
 
 
 module.exports = function(robot) {
+    if (!robot.production) {
+        return;
+    }
+
     var previousData;
     var brainFile = robot.config.get('brain:file');
 

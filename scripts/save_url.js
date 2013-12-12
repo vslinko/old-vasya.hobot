@@ -1,13 +1,14 @@
 // Commands:
 //   hubot сохрани <описание> <ссылка>
 //   hubot сохрани <ссылка>
+//   hubot что ты сохранил?
 
 
 var brainKey = 'save_url:saved';
 
 
 module.exports = function(robot) {
-    robot.respond(/сохрани (.+ )?(https?:\/\/[^\s]+)/i, function(msg) {
+    robot.respond(/(?:сохрани|схорони) (.+ )?(https?:\/\/[^\s]+)/i, function(msg) {
         var description = msg.match[1] || '';
         var url = msg.match[2];
 
@@ -29,7 +30,7 @@ module.exports = function(robot) {
         });
     });
 
-    robot.respond(/закрома/i, function(msg) {
+    robot.respond(/(?:закрома|что ты (?:сохранил|схоронил)\??)/i, function(msg) {
         var saved = robot.brain.get(brainKey) || [];
 
         if (saved.length === 0) {

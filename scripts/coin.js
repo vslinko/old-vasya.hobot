@@ -3,7 +3,7 @@
 
 
 module.exports = function(robot) {
-    robot.respond(/кинь монетку/i, function(msg) {
+    robot.respond(/(?:кинь|подкинь) (?:монету|монетку)/i, function(msg) {
         msg.reply(msg.random(['орел', 'решка']));
     });
 };

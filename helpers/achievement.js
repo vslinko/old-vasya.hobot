@@ -17,7 +17,7 @@ module.exports = function(robot) {
         }
 
         if (icon > maxIcon) {
-            return callback(new Error('Invalid achievement icon'));
+            return callback(new Error('нет такой иконки ' + icon));
         }
 
         request.post('http://worldcraft.com.ua/minecraft/generator.php', {
@@ -34,13 +34,13 @@ module.exports = function(robot) {
             }
 
             if (!res.headers.location) {
-                return callback(new Error('No location header in response'));
+                return callback(new Error('не вернулся заголовок location'));
             }
 
             matches = locationRegexp.exec(res.headers.location);
 
             if (!matches) {
-                return callback(new Error('Invalid location header in response'));
+                return callback(new Error('неверный заголовок location: ' + res.headers.location));
             }
 
             url = 'http://worldcraft.com.ua/minecraft/out/' + matches[1] + '.png';
