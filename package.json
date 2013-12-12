@@ -1,0 +1,20 @@
+{
+    "name": "vasya.hobot",
+    "version": "0.1.0",
+    "description": "Вася Хобот",
+    "homepage": "http://вася-хобот.рф",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "dependencies": {
+        "coffee-script": "~1.6",
+        "hubot": "~2.6",
+        "hubot-scripts": "~2.5",
+        "hubot-skype": "git://github.com/netpro2k/hubot-skype.git",
+        "nconf": "~0.6",
+        "fs-extra": "~0.8",
+        "request": "~2.29",
+        "express": "~3.4"
+    },
+    "private": true
+}
